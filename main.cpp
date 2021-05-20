@@ -33,39 +33,39 @@ void printContainerAsIp(const T& bytes_array)
 }
 
 template <typename T>
-void print(T value)
+void print_ip(T value)
 {
 	const auto bytes_array = reinterpretToBytes(value);
 	printContainerAsIp(bytes_array);
 }
 
 template<>
-void print(const std::string value)
+void print_ip(const std::string value)
 {
 	std::cout << value << std::endl;
 };
 
 template<class TupType, size_t... I>
-void print(const TupType& _tup, std::index_sequence<I...>)
+void print_ip(const TupType& _tup, std::index_sequence<I...>)
 {
 	(..., (std::cout << (I == 0 ? "" : ".") << std::get<I>(_tup)));
 	std::cout << std::endl;
 }
 
 template<class... T>
-void print(const std::tuple<T...>& _tup)
+void print_ip(const std::tuple<T...>& _tup)
 {
-	print(_tup, std::make_index_sequence<sizeof...(T)>());
+	print_ip(_tup, std::make_index_sequence<sizeof...(T)>());
 }
 
 template <typename T>
-void print(const std::vector<T>& value_container)
+void print_ip(const std::vector<T>& value_container)
 {
 	printContainerAsIp(value_container);
 }
 
 template <typename T>
-void print(const std::list<T>& value_container)
+void print_ip(const std::list<T>& value_container)
 {
 	printContainerAsIp(value_container);
 }
@@ -83,7 +83,7 @@ struct is_vector: std::false_type { };
 template <class T>
 struct is_vector<typename std::vector<T>>: std::true_type { };
 template<typename T, class = std::enable_if_t<is_list<T>::value || is_vector<T>::value>>
-void print(T value_container)
+void print_ip(T value_container)
 {
 	std::cout << "is list" << std::endl;
 	for(const auto byte_value : value_container)
@@ -96,17 +96,17 @@ void print(T value_container)
 
 int main()
 {
-	print( char{-1} );
-	print( short{0} );
-	print( int{2130706433} );
-	print( long{8875824491850138409} );
+	print_ip( char{-1} );
+	print_ip( short{0} );
+	print_ip( int{2130706433} );
+	print_ip( long{8875824491850138409} );
 
-	print( std::string("Hello, World!") );
+	print_ip( std::string("Hello, World!") );
 
-	print( std::vector<short>{100, 200, 300, 400} );
-	print( std::list<short>{400, 300, 200, 100} );
+	print_ip( std::vector<short>{100, 200, 300, 400} );
+	print_ip( std::list<short>{400, 300, 200, 100} );
 
-	print( std::make_tuple(123, 456, 789, 0) );
+	print_ip( std::make_tuple(123, 456, 789, 0) );
 
 	return 0;
 }
