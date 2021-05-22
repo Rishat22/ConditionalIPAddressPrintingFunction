@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(ConditionalIPAddressPrintingFunction LANGUAGES CXX)
+if(DEFINED ENV{GITHUB_RUN_NUMBER})
+    project(print_ip VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
+else()
+    project(print_ip)
+endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
