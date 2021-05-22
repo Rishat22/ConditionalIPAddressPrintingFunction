@@ -29,9 +29,6 @@ jobs:
       - name: Generate doxygen docs
         run: doxygen doxygen.conf
       - name: Publish doxygen conf
-      # uses: mattnotmitt/doxygen-action@v1
-      # with:
-        # additional-packages: font-fira-code
         uses: JamesIves/github-pages-deploy-action@4.1.2
         with:
           branch: gh-pages
