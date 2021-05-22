@@ -1,9 +1,17 @@
 /** @file */
+/*****************************************************************************
+*
+*   File: print_ip.hpp
+*
+*   Description: This file implements class print_ip.
+*		 The class provides the ability to print
+*		 any type by interpreting it to an imaginary address.
+*
+*   Rev 1.0 21 May 2021 Zakirov Rishat
+*   Initial revision
+*
+*****************************************************************************/
 
-/**
- * \brief print_ip for byte sequence: print byte by byte as unsigned int8
- * \param[in] ip byte sequence: short, int, long, etc
- */
 #include <iostream>
 #include <algorithm>
 #include <string>
