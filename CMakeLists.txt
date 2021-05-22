@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(custom_allocator LANGUAGES CXX)
+project(ConditionalIPAddressPrintingFunction LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -10,4 +10,4 @@ set(project_sources
     interpreter_to_address.hpp
     )
 
-add_executable(custom_allocator ${project_sources} )
+add_executable(ConditionalIPAddressPrintingFunction ${project_sources} )

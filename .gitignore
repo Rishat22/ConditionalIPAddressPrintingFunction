@@ -1,7 +1,6 @@
 # Temporary files #
 ###################
 *~
-.*
 *.tmp
 *.autosave
 !/.gitignore
