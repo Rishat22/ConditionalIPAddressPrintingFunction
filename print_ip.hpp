@@ -1,16 +1,4 @@
 /** @file */
-/*****************************************************************************
-*
-*   File: print_ip.hpp
-*
-*   Description: This file implements class print_ip.
-*		 The class provides the ability to print
-*		 any type by interpreting it to an imaginary address.
-*
-*   Rev 1.0 21 May 2021 Zakirov Rishat
-*   Initial revision
-*
-*****************************************************************************/
 
 #include <iostream>
 #include <algorithm>
@@ -47,28 +35,8 @@ void printContainerAsIp(const T& bytes_array)
 }
 
 /**
- *******************************************************************************
- * * \brief print_ip any numeric type
- *
- *   \par Name:
- *              void print_ip(T value) \n
- *
- *   \par Purpose:
- * 				print any numeric type.\n
- *
- *   \par Inputs:
- * 				T value - any numeric type.\n
- *
- *   \par Outputs:
- * 				None \n
- *
- *   \par Returns:
- * 				None \n
- *
- *   \par Notes:
- * 				None \n
- *
- *******************************************************************************
+ * \brief print_ip any numeric type
+ * \param[in] ip stl container
  */
 template <typename T>
 void print_ip(T value)
