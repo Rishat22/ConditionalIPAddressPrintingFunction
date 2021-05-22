@@ -9,13 +9,7 @@ endif()
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(project_sources
-    print_ip.hpp
-    main.cpp
-    interpreter_to_address.hpp
-    )
-
-add_executable(print_ip ${project_sources} )
+add_executable(print_ip main.cpp )
 
 if (MSVC)
     target_compile_options(print_ip PRIVATE
