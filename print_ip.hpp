@@ -1,9 +1,14 @@
-/** @file */
-
 /**
- * \brief print_ip for byte sequence: print byte by byte as unsigned int8
- * \param[in] ip byte sequence: short, int, long, etc
- */
+ ******************************************************************************
+* \file print_ip.hpp
+*   Description: This file implements class print_ip.
+*		 The class provides the ability to print
+*		 any type by interpreting it to an imaginary address.
+*
+*   Rev 1.0 21 May 2021 Zakirov Rishat
+*   Initial revision
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <string>
@@ -40,13 +45,13 @@ void printContainerAsIp(const T& bytes_array)
 
 /**
  *******************************************************************************
- * * \brief print_ip any numeric type
+ * * \brief Interprets the entered value as an imaginary ip-address
  *
  *   \par Name:
  *              void print_ip(T value) \n
  *
  *   \par Purpose:
- * 				print any numeric type.\n
+ * 				Interprets the entered value as an imaginary ip-address.\n
  *
  *   \par Inputs:
  * 				T value - any numeric type.\n
@@ -69,23 +74,71 @@ void print_ip(T value)
 	printContainerAsIp(bytes_array);
 }
 
+/**
+ *******************************************************************************
+ * * \brief Interprets the entered value as an imaginary ip-address
+ *
+ *   \par Name:
+ *              void print_ip(const std::string value) \n
+ *
+ *   \par Purpose:
+ * 				Interprets the entered value as an imaginary ip-address.\n
+ *
+ *   \par Inputs:
+ * 				std::string value - string value.\n
+ *
+ *   \par Outputs:
+ * 				None \n
+ *
+ *   \par Returns:
+ * 				None \n
+ *
+ *   \par Notes:
+ * 				None \n
+ *
+ *******************************************************************************
+ */
 template<>
 void print_ip(const std::string value)
 {
 	std::cout << value << std::endl;
 }
 
-template<class TupType, size_t... I>
-void print_ip(const TupType& _tup, std::index_sequence<I...>)
+template<class TupType, size_t... index>
+void print_ip(const TupType& tuple_value, std::index_sequence<index...>)
 {
-	(..., (std::cout << (I == 0 ? "" : ".") << std::get<I>(_tup)));
+	(..., (std::cout << (index == 0 ? "" : ".") << std::get<index>(tuple_value)));
 	std::cout << std::endl;
 }
 
+/**
+ *******************************************************************************
+ * * \brief Interprets the entered value as an imaginary ip-address
+ *
+ *   \par Name:
+ *              void print_ip(const std::tuple<T...>& tuple_value) \n
+ *
+ *   \par Purpose:
+ * 				Interprets the entered value as an imaginary ip-address.\n
+ *
+ *   \par Inputs:
+ * 				std::tuple<T...>& tuple_value - std::tuple value.\n
+ *
+ *   \par Outputs:
+ * 				None \n
+ *
+ *   \par Returns:
+ * 				None \n
+ *
+ *   \par Notes:
+ * 				None \n
+ *
+ *******************************************************************************
+ */
 template<class... T>
-void print_ip(const std::tuple<T...>& _tup)
+void print_ip(const std::tuple<T...>& tuple_value)
 {
-	print_ip(_tup, std::make_index_sequence<sizeof...(T)>());
+	print_ip(tuple_value, std::make_index_sequence<sizeof...(T)>());
 }
 
 template <typename T>
