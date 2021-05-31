@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <type_traits>
 #include <string>
 #include <array>
 #include <list>
@@ -68,7 +69,10 @@ void printContainerAsIp(const T& bytes_array)
  *******************************************************************************
  */
 template <typename T>
-void print_ip(T value)
+auto print_ip(T value) -> decltype(
+		std::declval<
+		typename std::enable_if<std::is_convertible<T, uint8_t>::value, T>::type
+		  >(), void() )
 {
 	const auto bytes_array = reinterpretToBytes(value);
 	printContainerAsIp(bytes_array);
@@ -98,8 +102,15 @@ void print_ip(T value)
  *
  *******************************************************************************
  */
-template<>
-void print_ip(const std::string value)
+template < class T>
+struct is_string : std::integral_constant <bool,
+									 std::is_same<std::string, T>::value ||
+									 std::is_same<const char*, T>::value >{};
+template <typename T>
+auto print_ip(const std::string value) -> decltype(
+		std::declval<
+		typename std::enable_if<is_string<T>::value, T>::type
+		  >(), void() )
 {
 	std::cout << value << std::endl;
 }
@@ -141,38 +152,38 @@ void print_ip(const std::tuple<T...>& tuple_value)
 	print_ip(tuple_value, std::make_index_sequence<sizeof...(T)>());
 }
 
-template <typename T>
-void print_ip(const std::vector<T>& value_container)
-{
-	printContainerAsIp(value_container);
-}
+template<typename T, typename _ = void>
+struct is_container : std::false_type {};
+
+template<typename... Ts>
+struct is_container_helper {};
+
+template<typename T>
+struct is_container<
+		T,
+		std::conditional_t<
+			false,
+			is_container_helper<
+				typename T::value_type,
+				typename T::size_type,
+				typename T::allocator_type,
+				typename T::iterator,
+				typename T::const_iterator,
+				decltype(std::declval<T>().size()),
+				decltype(std::declval<T>().begin()),
+				decltype(std::declval<T>().end()),
+				decltype(std::declval<T>().cbegin()),
+				decltype(std::declval<T>().cend())
+				>,
+			void
+			>
+		> : public std::true_type {};
 
 template <typename T>
-void print_ip(const std::list<T>& value_container)
+auto print_ip(T value) -> decltype(
+		std::declval<
+		typename std::enable_if<is_container<T>::value, T>::type
+		  >(), void() )
 {
-	printContainerAsIp(value_container);
+	printContainerAsIp(value);
 }
-
-/* An attempt to combine a vector and a list into one case.
-template <class T>
-struct is_list: std::false_type {};
-
-template <class T>
-struct is_list<typename std::list<T>>: std::true_type { };
-
-template <class T>
-struct is_vector: std::false_type { };
-
-template <class T>
-struct is_vector<typename std::vector<T>>: std::true_type { };
-template<typename T, class = std::enable_if_t<is_list<T>::value || is_vector<T>::value>>
-void print_ip(T value_container)
-{
-	std::cout << "is list" << std::endl;
-	for(const auto byte_value : value_container)
-	{
-		std::cout << static_cast<size_t>(byte_value) << ".";
-	}
-	std::cout << std::endl;
-};
-*/
