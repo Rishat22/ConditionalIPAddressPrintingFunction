@@ -62,7 +62,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">print_ip.hpp File Reference</div>  </div>
@@ -70,10 +69,10 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;list&gt;</code><br />
+<code>#include &quot;<a class="el" href="custom__type__traits_8h_source.html">custom_type_traits.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for print_ip.hpp:</div>
 <div class="dyncontent">
@@ -89,22 +88,6 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="print__ip_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structis__string.html">is_string&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interprets the entered value as an imaginary ip-address.  <a href="structis__string.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structis__tuple.html">is_tuple&lt; typename &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structis__tuple_3_01std_1_1tuple_3_01T_8_8_8_01_4_01_4.html">is_tuple&lt; std::tuple&lt; T... &gt; &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structis__container.html">is_container&lt; T, _ &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structis__container__helper.html">is_container_helper&lt; Ts &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structis__container_3_01T_00_01std_1_1conditional__t_3_01false_00_01is__container__helper_3_01ty98e374194158c5d4a93d6b9411b086ed.html">is_container&lt; T, std::conditional_t&lt; false, is_container_helper&lt; typename T::value_type, typename T::size_type, typename T::allocator_type, typename T::iterator, typename T::const_iterator, decltype(std::declval&lt; T &gt;().size()), decltype(std::declval&lt; T &gt;().begin()), decltype(std::declval&lt; T &gt;().end()), decltype(std::declval&lt; T &gt;().cbegin()), decltype(std::declval&lt; T &gt;().cend()) &gt;, void &gt; &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab2c18b7ea1716a2a2c32ff74613ac05d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -119,6 +102,7 @@ Functions</h2></td></tr>
 <tr class="separator:acc304823a70d113ab34c976245fa2d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32667e8c51764548a019961d6efbc517"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a32667e8c51764548a019961d6efbc517"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="print__ip_8hpp.html#a32667e8c51764548a019961d6efbc517">print_ip</a> (const std::string value) -&gt; decltype(std::declval&lt; typename std::enable_if&lt; <a class="el" href="structis__string.html">is_string</a>&lt; T &gt;::value, T &gt;::type &gt;(), void())</td></tr>
+<tr class="memdesc:a32667e8c51764548a019961d6efbc517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interprets the entered value as an imaginary ip-address.  <a href="print__ip_8hpp.html#a32667e8c51764548a019961d6efbc517">More...</a><br /></td></tr>
 <tr class="separator:a32667e8c51764548a019961d6efbc517"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e6024cbb43e4b176522b9bc6e5a65ca"><td class="memTemplParams" colspan="2">template&lt;class TupType , size_t... index&gt; </td></tr>
 <tr class="memitem:a1e6024cbb43e4b176522b9bc6e5a65ca"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="print__ip_8hpp.html#a1e6024cbb43e4b176522b9bc6e5a65ca">print_tuple</a> (const TupType &amp;tuple_value, std::index_sequence&lt; index... &gt;)</td></tr>
@@ -152,6 +136,23 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Interprets the entered value as an imaginary ip-address. </p>
+<ul>
+<li><dl class="section user"><dt>Name:</dt><dd>void <a class="el" href="print__ip_8hpp.html#a32667e8c51764548a019961d6efbc517" title="Interprets the entered value as an imaginary ip-address.">print_ip(const std::string value)</a> <br  />
+ </dd></dl>
+<dl class="section user"><dt>Purpose:</dt><dd>Interprets the entered value as an imaginary ip-address.<br  />
+ </dd></dl>
+<dl class="section user"><dt>Inputs:</dt><dd>std::string value - string value.<br  />
+ </dd></dl>
+<dl class="section user"><dt>Outputs:</dt><dd>None <br  />
+ </dd></dl>
+<dl class="section user"><dt>Returns:</dt><dd>None <br  />
+ </dd></dl>
+<dl class="section user"><dt>Notes:</dt><dd>None <br  />
+</dd></dl>
+</li>
+</ul>
 
 </div>
 </div>

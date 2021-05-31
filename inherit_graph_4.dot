@@ -6,5 +6,5 @@ digraph "Graphical Class Hierarchy"
   rankdir="LR";
   Node6 [label="integral_constant",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node6 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="is_string\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structis__string.html",tooltip="Interprets the entered value as an imaginary ip-address."];
+  Node0 [label="is_string\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structis__string.html",tooltip=" "];
 }
