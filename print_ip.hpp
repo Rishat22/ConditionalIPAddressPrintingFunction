@@ -115,11 +115,20 @@ auto print_ip(const std::string value) -> decltype(
 	std::cout << value << std::endl;
 }
 
+template <typename> struct is_tuple : std::false_type {};
+template <typename... T> struct is_tuple<std::tuple<T...>> : std::true_type {};
+
 template<class TupType, size_t... index>
-void print_ip(const TupType& tuple_value, std::index_sequence<index...>)
+void print_tuple(const TupType& tuple_value, std::index_sequence<index...>)
 {
 	(..., (std::cout << (index == 0 ? "" : ".") << std::get<index>(tuple_value)));
 	std::cout << std::endl;
+}
+
+template<class... T>
+void print_tuple(const std::tuple<T...>& tuple_value)
+{
+	print_tuple(tuple_value, std::make_index_sequence<sizeof...(T)>());
 }
 
 /**
@@ -146,10 +155,13 @@ void print_ip(const TupType& tuple_value, std::index_sequence<index...>)
  *
  *******************************************************************************
  */
-template<class... T>
-void print_ip(const std::tuple<T...>& tuple_value)
+template<typename T>
+auto print_ip(T value) -> decltype(
+		std::declval<
+		typename std::enable_if<is_tuple<T>::value, T>::type
+		  >(), void() )
 {
-	print_ip(tuple_value, std::make_index_sequence<sizeof...(T)>());
+	print_tuple(value);
 }
 
 template<typename T, typename _ = void>
