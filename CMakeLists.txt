@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(project_sources
     print_ip.hpp
+    custom_type_traits.h
     main.cpp
     interpreter_to_address.hpp
     )
