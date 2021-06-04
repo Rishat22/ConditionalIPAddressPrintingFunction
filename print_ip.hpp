@@ -68,11 +68,9 @@ void printContainerAsIp(const T& bytes_array)
  *
  *******************************************************************************
  */
-template <typename T>
-auto print_ip(const T& value) -> decltype(
-		std::declval<
-		typename std::enable_if<std::is_convertible<T, uint8_t>::value, T>::type
-		  >(), void() )
+template <typename T, std::enable_if_t<
+			  std::is_convertible<T, uint8_t>::value, bool> = true>
+void print_ip(const T& value)
 {
 	const auto bytes_array = reinterpretToBytes(value);
 	printContainerAsIp(bytes_array);
@@ -102,11 +100,9 @@ auto print_ip(const T& value) -> decltype(
  *
  *******************************************************************************
  */
-template <typename T>
-auto print_ip(const T& value) -> decltype(
-		std::declval<
-		typename std::enable_if<is_string<T>::value, T>::type
-		  >(), void() )
+template <typename T, std::enable_if_t<
+			is_string<T>::value, bool> = true>
+void print_ip(const T& value)
 {
 	std::cout << value << std::endl;
 }
@@ -148,21 +144,16 @@ void print_tuple(const std::tuple<T...>& tuple_value)
  *
  *******************************************************************************
  */
-template<typename T>
-auto print_ip(const T& value) -> decltype(
-		std::declval<
-		typename std::enable_if<is_tuple<T>::value, T>::type
-		  >(), void() )
+template<typename T, std::enable_if_t<is_tuple<T>::value, bool> = true>
+void print_ip(const T& value)
 {
 	print_tuple(value);
 }
 
 
-template <typename T>
-auto print_ip(const T& value) -> decltype(
-		std::declval<
-		typename std::enable_if<is_container<T>::value && !is_string<T>::value, T>::type
-		  >(), void() )
+template <typename T, std::enable_if_t<is_container<T>::value
+									&& !is_string<T>::value, bool> = true>
+void print_ip(const T& value)
 {
 	printContainerAsIp(value);
 }
