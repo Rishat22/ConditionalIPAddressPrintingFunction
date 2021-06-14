@@ -1,6 +1,8 @@
 #ifndef CUSTOM_TYPE_TRAITS_H
 #define CUSTOM_TYPE_TRAITS_H
 #include <type_traits>
+#include <list>
+#include <vector>
 
 template < class T>
 struct is_string : std::integral_constant <bool,
@@ -32,6 +34,10 @@ struct is_container< T,
 			>
 		> : public std::true_type {};
 
+template <typename> struct is_list : std::false_type {};
+template <typename T> struct is_list<std::list<T>> : std::true_type {};
+template <typename> struct is_vector : std::false_type {};
+template <typename T> struct is_vector<std::vector<T>> : std::true_type {};
 
 template <typename> struct is_tuple : std::false_type {};
 template <typename... T> struct is_tuple<std::tuple<T...>> : std::true_type {};

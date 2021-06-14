@@ -69,7 +69,7 @@ void printContainerAsIp(const T& bytes_array)
  *******************************************************************************
  */
 template <typename T, std::enable_if_t<
-			  std::is_convertible<T, uint8_t>::value, bool> = true>
+			  std::is_integral<T>::value, bool> = true>
 void print_ip(const T& value)
 {
 	const auto bytes_array = reinterpretToBytes(value);
@@ -151,8 +151,8 @@ void print_ip(const T& value)
 }
 
 
-template <typename T, std::enable_if_t<is_container<T>::value
-									&& !is_string<T>::value, bool> = true>
+template <typename T, std::enable_if_t<is_list<T>::value ||
+									   is_vector<T>::value, bool> = true>
 void print_ip(const T& value)
 {
 	printContainerAsIp(value);
