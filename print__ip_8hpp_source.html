@@ -102,7 +102,7 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, std::enable_if_t&lt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;              std::is_convertible&lt;T, uint8_t&gt;::value, <span class="keywordtype">bool</span>&gt; = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;              std::is_integral&lt;T&gt;::value, <span class="keywordtype">bool</span>&gt; = <span class="keyword">true</span>&gt;</div>
 <div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="print__ip_8hpp.html#adc87c2202fc1519a6d2ff6fe1fc96a78">   73</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="print__ip_8hpp.html#adc87c2202fc1519a6d2ff6fe1fc96a78">print_ip</a>(<span class="keyword">const</span> T&amp; value)</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> bytes_array = <a class="code" href="print__ip_8hpp.html#ab2c18b7ea1716a2a2c32ff74613ac05d">reinterpretToBytes</a>(value);</div>
@@ -136,8 +136,8 @@ $(function() {
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;template &lt;typename T, std::enable_if_t&lt;is_container&lt;T&gt;::value</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                    &amp;&amp; !<a class="code" href="structis__string.html">is_string&lt;T&gt;::value</a>, <span class="keywordtype">bool</span>&gt; = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;template &lt;typename T, std::enable_if_t&lt;is_list&lt;T&gt;::value ||</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                       <a class="code" href="structis__vector.html">is_vector&lt;T&gt;::value</a>, <span class="keywordtype">bool</span>&gt; = <span class="keyword">true</span>&gt;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keywordtype">void</span> <a class="code" href="print__ip_8hpp.html#adc87c2202fc1519a6d2ff6fe1fc96a78">print_ip</a>(<span class="keyword">const</span> T&amp; value)</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;{</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="print__ip_8hpp.html#a86c9db06134bab6f7756ebc0958e0bb1">printContainerAsIp</a>(value);</div>
@@ -147,7 +147,8 @@ $(function() {
 <div class="ttc" id="acustom__type__traits_8h_html"><div class="ttname"><a href="custom__type__traits_8h.html">custom_type_traits.h</a></div></div>
 <div class="ttc" id="aprint__ip_8hpp_html_adc87c2202fc1519a6d2ff6fe1fc96a78"><div class="ttname"><a href="print__ip_8hpp.html#adc87c2202fc1519a6d2ff6fe1fc96a78">print_ip</a></div><div class="ttdeci">void print_ip(const T &amp;value)</div><div class="ttdoc">Interprets the entered value as an imaginary ip-address.</div><div class="ttdef"><b>Definition:</b> print_ip.hpp:73</div></div>
 <div class="ttc" id="aprint__ip_8hpp_html_a1e6024cbb43e4b176522b9bc6e5a65ca"><div class="ttname"><a href="print__ip_8hpp.html#a1e6024cbb43e4b176522b9bc6e5a65ca">print_tuple</a></div><div class="ttdeci">void print_tuple(const TupType &amp;tuple_value, std::index_sequence&lt; index... &gt;)</div><div class="ttdef"><b>Definition:</b> print_ip.hpp:111</div></div>
-<div class="ttc" id="astructis__string_html"><div class="ttname"><a href="structis__string.html">is_string</a></div><div class="ttdef"><b>Definition:</b> custom_type_traits.h:6</div></div>
+<div class="ttc" id="astructis__string_html"><div class="ttname"><a href="structis__string.html">is_string</a></div><div class="ttdef"><b>Definition:</b> custom_type_traits.h:8</div></div>
+<div class="ttc" id="astructis__vector_html"><div class="ttname"><a href="structis__vector.html">is_vector</a></div><div class="ttdef"><b>Definition:</b> custom_type_traits.h:39</div></div>
 <div class="ttc" id="aprint__ip_8hpp_html_ab2c18b7ea1716a2a2c32ff74613ac05d"><div class="ttname"><a href="print__ip_8hpp.html#ab2c18b7ea1716a2a2c32ff74613ac05d">reinterpretToBytes</a></div><div class="ttdeci">std::array&lt; uint8_t, sizeof(T)&gt; reinterpretToBytes(const T value)</div><div class="ttdef"><b>Definition:</b> print_ip.hpp:20</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

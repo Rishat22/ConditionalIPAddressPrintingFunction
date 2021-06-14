@@ -8,5 +8,9 @@ digraph "Graphical Class Hierarchy"
   Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node0 [label="is_container\< T, std\l::conditional_t\< false,\l is_container_helper\< typename\l T::value_type, typename T::\lsize_type, typename T::allocator\l_type, typename T::iterator, typename\l T::const_iterator, decltype(std::declval\l\< T \>().size()), decltype(std::declval\<\l T \>().begin()), decltype(std::declval\< T\l \>().end()), decltype(std::declval\< T \>().cbegin\l()), decltype(std::declval\< T \>().cend()) \>, void \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structis__container_3_01T_00_01std_1_1conditional__t_3_01false_00_01is__container__helper_3_01ty98e374194158c5d4a93d6b9411b086ed.html",tooltip=" "];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="is_tuple\< std::tuple\l\< T... \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structis__tuple_3_01std_1_1tuple_3_01T_8_8_8_01_4_01_4.html",tooltip=" "];
+  Node3 [label="is_list\< std::list\l\< T \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structis__list_3_01std_1_1list_3_01T_01_4_01_4.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="is_tuple\< std::tuple\l\< T... \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structis__tuple_3_01std_1_1tuple_3_01T_8_8_8_01_4_01_4.html",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="is_vector\< std::vector\l\< T \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structis__vector_3_01std_1_1vector_3_01T_01_4_01_4.html",tooltip=" "];
 }

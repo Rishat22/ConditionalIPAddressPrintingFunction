@@ -96,7 +96,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a86c9db06134bab6f7756ebc0958e0bb1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a86c9db06134bab6f7756ebc0958e0bb1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="print__ip_8hpp.html#a86c9db06134bab6f7756ebc0958e0bb1">printContainerAsIp</a> (const T &amp;bytes_array)</td></tr>
 <tr class="separator:a86c9db06134bab6f7756ebc0958e0bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc87c2202fc1519a6d2ff6fe1fc96a78"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; std::is_convertible&lt; T, uint8_t &gt;::value, bool &gt;  = true&gt; </td></tr>
+<tr class="memitem:adc87c2202fc1519a6d2ff6fe1fc96a78"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; std::is_integral&lt; T &gt;::value, bool &gt;  = true&gt; </td></tr>
 <tr class="memitem:adc87c2202fc1519a6d2ff6fe1fc96a78"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="print__ip_8hpp.html#adc87c2202fc1519a6d2ff6fe1fc96a78">print_ip</a> (const T &amp;value)</td></tr>
 <tr class="memdesc:adc87c2202fc1519a6d2ff6fe1fc96a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interprets the entered value as an imaginary ip-address.  <a href="print__ip_8hpp.html#adc87c2202fc1519a6d2ff6fe1fc96a78">More...</a><br /></td></tr>
 <tr class="separator:adc87c2202fc1519a6d2ff6fe1fc96a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,7 +117,7 @@ Functions</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; std::is_convertible&lt; T, uint8_t &gt;::value, bool &gt;  = true&gt; </div>
+template&lt;typename T , std::enable_if_t&lt; std::is_integral&lt; T &gt;::value, bool &gt;  = true&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void print_ip </td>
